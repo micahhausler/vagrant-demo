@@ -14,7 +14,7 @@ then
     # install ipython and dependencies into virtualenv
     pip install pyzmq matplotlib -b /tmp;
     pip install uwsgi tornado werkzeug jinja2;
-    pip install ipython;
+    pip install ipython django;
 
     touch /home/vagrant/.setup_complete;
 fi
