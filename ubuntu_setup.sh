@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -f /home/vagrant/.setup_complete ] 
+if [ ! -f /home/vagrant/.setup_complete ]
 then
     echo 'deb http://archive.ubuntu.com/ubuntu precise multiverse' >> /etc/apt/sources.list;
     sudo apt-get update;
@@ -13,8 +13,11 @@ then
     . ./venv/bin/activate
     # install ipython and dependencies into virtualenv
     pip install pyzmq matplotlib -b /tmp;
-    pip install uwsgi tornado werkzeug jinja2;
+    pip install uwsgi tornado werkzeug jinja2 pyzmq;
     pip install ipython django;
 
+    echo "source ./venv/bin/activate" >>  .bashrc;
+
     touch /home/vagrant/.setup_complete;
+    chown -R ubuntu:ubuntu ./venv .setup_complete;
 fi
