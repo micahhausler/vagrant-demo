@@ -7,7 +7,7 @@ Install
 -------
 
 1. [Install Virtualbox](https://www.virtualbox.org/wiki/Downloads)
-2. [Install Vagrant](http://docs.vagrantup.com/v2/installation/index.html)
+2. [Install Vagrant](http://www.vagrantup.com/downloads)
 
 Setup
 -----
