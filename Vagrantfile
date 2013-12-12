@@ -7,11 +7,10 @@
 # $ vagrant ssh
 
 
-Vagrant::VERSION >= "1.1.0" and Vagrant.configure("2") do |config|
-  config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box" # Official Ubuntu 12.04 daily Cloud Image amd64, 341MB
+Vagrant::VERSION >= "1.4.0" and Vagrant.configure("2") do |config|
+  # Official Ubuntu 12.04 daily Cloud Image amd64, 341MB
+  config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box"
   config.vm.box = "ubuntu1204"
-  #config.vm.box_url = "http://goo.gl/8kWkm" #  Ubuntu Server 12.04 amd64 (with Puppet, Chef and VirtualBox 4.2.1), 267MB
-  #config.vm.box = "web"
   # See http://www.vagrantbox.es/ for a fuller list of vagrant boxes
 
   config.vm.define :web1 do |web1_config|
@@ -19,7 +18,7 @@ Vagrant::VERSION >= "1.1.0" and Vagrant.configure("2") do |config|
     web1_config.vm.provider :virtualbox do |vb|
       # Tell VirtualBox to use 1GB of memory
       vb.customize ["modifyvm", :id, "--memory", 1024]
-    end 
+    end
 
     # To open a port, the syntax is  guest: <vm port>, host: <host port>
     web1_config.vm.network :forwarded_port, guest: 8080, host: 8080
@@ -35,5 +34,5 @@ Vagrant::VERSION >= "1.1.0" and Vagrant.configure("2") do |config|
     # Run the ubuntu_setup.sh bash script
     web1_config.vm.provision :shell, :path => "ubuntu_setup.sh"
 
-  end 
+  end
 end
