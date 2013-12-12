@@ -17,7 +17,9 @@ Vagrant::VERSION >= "1.4.0" and Vagrant.configure("2") do |config|
 
     web1_config.vm.provider :virtualbox do |vb|
       # Tell VirtualBox to use 1GB of memory
+      # See http://www.virtualbox.org/manual/ch08.html#vboxmanage-modifyvm for more information
       vb.customize ["modifyvm", :id, "--memory", 1024]
+      vb.customize ["modifyvm", :id, "--cpus", 4]
     end
 
     # To open a port, the syntax is  guest: <vm port>, host: <host port>
